@@ -19,7 +19,7 @@ canvas = tk.Canvas(root, height=HEIGHT, width=WIDTH)
 canvas.pack()
 
 # background details
-background_image = tk.PhotoImage(file='netspeed.png')
+background_image = tk.PhotoImage(file='./netspeed_gui/netspeed.png')
 background_label = tk.Label(root, image=background_image)
 background_label.place(relwidth=1, relheight=1)
 
@@ -68,13 +68,13 @@ button_speedtest = tk.Button(button_container, text="Speed Test", font=40, comma
 button_speedtest.place(relx=0.25, rely=0.1, relheight=0.2, relwidth=0.5)
 
 def netspeed() :
-    os.system("python3 netspeed_details.py")
+    os.system("python3 ./netspeed_gui/netspeed_details.py")
 
 button_netspeed = tk.Button(button_container, text="Internet Speed", font=40, command=netspeed)
 button_netspeed.place(relx=0.25, rely=0.4, relheight=0.2, relwidth=0.5)
 
 def bandwidth() :
-    os.system("python3 bandwidth_details.py")
+    os.system("python3 ./netspeed_gui/bandwidth_details.py")
 
 button_bandwidth = tk.Button(button_container, text="Bandwidth", font=40, command=bandwidth)
 button_bandwidth.place(relx=0.25, rely=0.7, relheight=0.2, relwidth=0.5)
