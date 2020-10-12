@@ -1,0 +1,1 @@
+python3 data_collection_timer.py
