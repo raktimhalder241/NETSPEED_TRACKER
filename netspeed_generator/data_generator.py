@@ -21,7 +21,7 @@ def trigger_data_insertion(d, u, p):
     argument_string = argument_string + str('{:.2f}'.format(p)) + " "
     argument_string = argument_string + current_time + " "
     argument_string = argument_string + current_date
-    os.system("python3 insert_data.py " + argument_string)
+    os.system("python3 ./netspeed_generator/insert_data.py " + argument_string)
 
 def main():
     count = 1
