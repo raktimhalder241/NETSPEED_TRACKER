@@ -1,1 +1,1 @@
-python3 data_collection_timer.py
+python3 ./netspeed_generator/data_collection_timer.py
