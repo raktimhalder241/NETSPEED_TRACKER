@@ -1,1 +1,1 @@
-python3 netspeed_gui.py
+python3 ./netspeed_gui/netspeed_gui.py
