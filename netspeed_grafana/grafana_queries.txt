@@ -1,1 +1,43 @@
+Netspeed Tracker Dashboard
+
 Daily Monitoring
+----------------
+Max, Avg, Min for each
+Download Speed
+Upload Speed
+Ping
+Bandwidth
+
+bar graph and semi-circular gauge.
+Range : 24h
+
+Unbound Monitoring
+------------------
+Download speed query :
+SELECT UNIX_TIMESTAMP(concat(date, ' ' ,time)) AS "time", download FROM netspeed_data ORDER BY time;
+Alert set : for 15 min to now
+
+Current vs History
+------------------
+History New query :
+SELECT UNIX_TIMESTAMP(concat(CURDATE(), ' ', hour, ':', minute, ':00')) AS "time", avg(target) AS "avg download new"
+from 
+  (
+    select download as target, minute(time) as minute, hour(time) as hour
+    from netspeed_data order by time
+  ) as main_table
+group by hour, minute
+order by hour, minute;
+
+History Old query :
+SELECT UNIX_TIMESTAMP(concat(CURDATE()- INTERVAL 1 DAY, ' ', hour, ':', minute, ':00')) AS "time", avg(target) AS "avg download old"
+from 
+  (
+    select download as target, minute(time) as minute, hour(time) as hour
+    from netspeed_data order by time
+  ) as main_table
+group by hour, minute
+order by hour, minute;
+
+Present query :
+SELECT UNIX_TIMESTAMP(concat(date, ' ' ,time)) AS "time", download AS "current download" FROM netspeed_data ORDER BY time;
